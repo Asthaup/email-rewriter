@@ -1,5 +1,7 @@
 # AI Email Rewriter
 
+**Live Demo**: [Try it here](https://YOUR_USERNAME.github.io/email-rewriter) (Note: Requires local setup with API key to rewrite emails)
+
 A web app that rewrites emails based on a selected or custom profession and the intended recipient using an AI API.
 
 ## Features
