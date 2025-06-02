@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AI Email Rewriter</title>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 600px; margin: auto; }
+    textarea, select, input, button { width: 100%; margin-top: 10px; padding: 10px; }
+    .output { margin-top: 20px; background: #f0f0f0; padding: 10px; }
+    .spinner { display: none; text-align: center; }
+    .copy-btn { background: green; color: white; }
+  </style>
+</head>
+<body>
+  <h2>AI Email Rewriter</h2>
+  <label>Email to Rewrite:</label>
+  <textarea id="inputEmail" rows="4" placeholder="Type your email here..."></textarea>
+
+  <label>Select Your Profession:</label>
+  <select id="profession">
+    <option value="">Select a profession or type below</option>
+    <option value="Software Engineer at a tech startup">Software Engineer at a tech startup</option>
+    <option value="Data Analyst in finance">Data Analyst in finance</option>
+    <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+    <option value="Sales Manager in pharmaceuticals">Sales Manager in pharmaceuticals</option>
+    <option value="Marketing Specialist in retail">Marketing Specialist in retail</option>
+    <option value="HR Manager in a multinational company">HR Manager in a multinational company</option>
+    <option value="College Professor in computer science">College Professor in computer science</option>
+    <option value="High School Teacher in mathematics">High School Teacher in mathematics</option>
+    <option value="Freelance Graphic Designer">Freelance Graphic Designer</option>
+    <option value="Content Writer for a media company">Content Writer for a media company</option>
+    <option value="Nurse in a hospital">Nurse in a hospital</option>
+    <option value="Physician in private practice">Physician in private practice</option>
+    <option value="Small Business Owner in hospitality">Small Business Owner in hospitality</option>
+    <option value="Project Manager in construction">Project Manager in construction</option>
+    <option value="Customer Support Specialist in e-commerce">Customer Support Specialist in e-commerce</option>
+  </select>
+
+  <label>Or Enter Your Custom Profession:</label>
+  <input type="text" id="customProfession" placeholder="e.g., Freelance Photographer">
+
+  <label>Who Are You Writing To?</label>
+  <select id="recipient">
+    <option value="">Select recipient or leave blank</option>
+    <option value="Manager">Manager</option>
+    <option value="Colleague">Colleague</option>
+    <option value="Client">Client</option>
+    <option value="Team Member">Team Member</option>
+    <option value="Professor">Professor</option>
+    <option value="HR Department">HR Department</option>
+    <option value="Customer">Customer</option>
+    <option value="Vendor">Vendor</option>
+  </select>
+
+  <button onclick="rewriteEmail()">Rewrite Email</button>
+
+  <div class="output" id="result"></div>
+  <div class="spinner" id="spinner">⏳ Loading...</div>
+  <button class="copy-btn" id="copyBtn" style="display: none;">Copy Email</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
