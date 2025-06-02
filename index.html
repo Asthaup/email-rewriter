@@ -1,62 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>AI Email Rewriter</title>
-  <style>
-    body { font-family: Arial; padding: 20px; max-width: 600px; margin: auto; }
-    textarea, select, input, button { width: 100%; margin-top: 10px; padding: 10px; }
-    .output { margin-top: 20px; background: #f0f0f0; padding: 10px; }
-    .spinner { display: none; text-align: center; }
-    .copy-btn { background: green; color: white; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Email Rewriter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 50%, #80deea 100%); /* Gradient background */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #00796b; /* Teal color for the heading */
+            margin-bottom: 20px;
+        }
+        textarea, select, input[type="text"], button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            background-color: #00796b; /* Teal button */
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #004d40; /* Darker teal on hover */
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-height: 100px;
+            text-align: left;
+            background-color: #f9f9f9; /* Light gray background for result */
+        }
+        #spinner {
+            display: none;
+            margin: 10px auto;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #00796b;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-  <h2>AI Email Rewriter</h2>
-  <label>Email to Rewrite:</label>
-  <textarea id="inputEmail" rows="4" placeholder="Type your email here..."></textarea>
-
-  <label>Select Your Profession:</label>
-  <select id="profession">
-    <option value="">Select a profession or type below</option>
-    <option value="Software Engineer at a tech startup">Software Engineer at a tech startup</option>
-    <option value="Data Analyst in finance">Data Analyst in finance</option>
-    <option value="Machine Learning Engineer">Machine Learning Engineer</option>
-    <option value="Sales Manager in pharmaceuticals">Sales Manager in pharmaceuticals</option>
-    <option value="Marketing Specialist in retail">Marketing Specialist in retail</option>
-    <option value="HR Manager in a multinational company">HR Manager in a multinational company</option>
-    <option value="College Professor in computer science">College Professor in computer science</option>
-    <option value="High School Teacher in mathematics">High School Teacher in mathematics</option>
-    <option value="Freelance Graphic Designer">Freelance Graphic Designer</option>
-    <option value="Content Writer for a media company">Content Writer for a media company</option>
-    <option value="Nurse in a hospital">Nurse in a hospital</option>
-    <option value="Physician in private practice">Physician in private practice</option>
-    <option value="Small Business Owner in hospitality">Small Business Owner in hospitality</option>
-    <option value="Project Manager in construction">Project Manager in construction</option>
-    <option value="Customer Support Specialist in e-commerce">Customer Support Specialist in e-commerce</option>
-  </select>
-
-  <label>Or Enter Your Custom Profession:</label>
-  <input type="text" id="customProfession" placeholder="e.g., Freelance Photographer">
-
-  <label>Who Are You Writing To?</label>
-  <select id="recipient">
-    <option value="">Select recipient or leave blank</option>
-    <option value="Manager">Manager</option>
-    <option value="Colleague">Colleague</option>
-    <option value="Client">Client</option>
-    <option value="Team Member">Team Member</option>
-    <option value="Professor">Professor</option>
-    <option value="HR Department">HR Department</option>
-    <option value="Customer">Customer</option>
-    <option value="Vendor">Vendor</option>
-  </select>
-
-  <button onclick="rewriteEmail()">Rewrite Email</button>
-
-  <div class="output" id="result"></div>
-  <div class="spinner" id="spinner">⏳ Loading...</div>
-  <button class="copy-btn" id="copyBtn" style="display: none;">Copy Email</button>
-
-  <script src="script.js"></script>
+    <div class="container">
+        <h1>AI Email Rewriter</h1>
+        <textarea id="inputEmail" placeholder="Enter your email here..." rows="4"></textarea>
+        <select id="profession">
+            <option value="">Select Profession</option>
+            <option value="Data Analyst in finance">Data Analyst in finance</option>
+            <option value="Software Engineer in tech">Software Engineer in tech</option>
+            <option value="Doctor in healthcare">Doctor in healthcare</option>
+            <option value="Teacher in education">Teacher in education</option>
+            <option value="Marketing Manager in business">Marketing Manager in business</option>
+            <option value="Graphic Designer in creative">Graphic Designer in creative</option>
+        </select>
+        <input type="text" id="customProfession" placeholder="Or enter a custom profession...">
+        <select id="recipient">
+            <option value="">Select Recipient</option>
+            <option value="Manager">Manager</option>
+            <option value="Client">Client</option>
+            <option value="Colleague">Colleague</option>
+            <option value="Friend">Friend</option>
+        </select>
+        <button onclick="rewriteEmail()">Rewrite Email</button>
+        <div id="spinner"></div>
+        <div id="result"></div>
+        <button id="copyBtn" style="display: none;" onclick="copyResult()">Copy Result</button>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
