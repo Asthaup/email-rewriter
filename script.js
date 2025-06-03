@@ -31,7 +31,7 @@ async function rewriteEmail() {
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer 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",
+        "Authorization": "Bearer YOUR_API_KEY",
         "Content-Type": "application/json",
         "HTTP-Referer": "https://chat.openrouter.ai",
         "X-Title": "email-rewriter-project"
