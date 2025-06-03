@@ -35,3 +35,12 @@ The OpenRouter API key in `script.js` is set to `Bearer YOUR_API_KEY` for securi
 
 ## Author
 Astha
+
+# AI Email Rewriter
+
+**Live Demo**: [Try it here](https://YOUR_USERNAME.github.io/email-rewriter) (Note: Requires local setup with API key to rewrite emails)
+
+## Screenshot
+![App Screenshot](app-screenshot.png)
+
+A web app that rewrites emails based on a selected or custom profession and the intended recipient using an AI API.
